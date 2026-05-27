@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concord International Hotel | Luxury Redefined</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ===== GLOBAL STYLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Cormorant Garamond', Georgia, serif;
+      background: #f9f7f2;
+      color: #3b3b2f;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ===== WHATSAPP BUTTON ===== */
+    .whatsapp-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 10000;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      animation: whatsappPulse 2s infinite;
+    }
+
+    .whatsapp-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+    }
+
+    @keyframes whatsappPulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 70px;
+      background: white;
+      color: #333;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .whatsapp-button:hover .whatsapp-tooltip {
+      opacity: 1;
+    }
+
+    /* ===== LANGUAGE SWITCHER ===== */
+    .language-switcher {
+      position: fixed;
+      top: 25px;
+      right: 30px;
+      z-index: 10000;
+      display: flex;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 8px 15px;
+      border-radius: 30px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      transition: all 0.3s;
+      color: #3b3b2f;
+      font-size: 0.85rem;
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(145deg, #d4af37, #b4943c);
+      color: white;
+    }
+
+    .lang-btn:hover:not(.active) {
+      color: #b4943c;
+    }
+
+    /* ===== LOGO & SLOGAN INTRO SECTION ===== */
+    .logo-slogan-intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, #ffffff 0%, #f7f3e8 40%, #ede4cf 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1), visibility 1s;
+      overflow: hidden;
+    }
+
+    .intro-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Golden particles background */
+    .particles-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle, #d4af37, #b4943c);
+      border-radius: 50%;
+      animation: floatParticle 3s infinite ease-in-out;
+      opacity: 0;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+    }
+
+    @keyframes floatParticle {
+      0% { 
+        transform: translateY(0) translateX(0) scale(0); 
+        opacity: 0; 
+      }
+      20% { 
+        opacity: 0.9; 
+      }
+      50% { 
+        transform: translateY(-40px) translateX(20px) scale(1.2); 
+        opacity: 0.7; 
+      }
+      80% { 
+        opacity: 0.3; 
+      }
+      100% { 
+        transform: translateY(-80px) translateX(-20px) scale(0); 
+        opacity: 0; 
+      }
+    }
+
+    /* Corner decorative lines */
+    .corner-line {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      opacity: 0.6;
+    }
+
+    .corner-line.top-left {
+      top: 60px;
+      left: 60px;
+      width: 150px;
+      height: 1px;
+      animation: lineShimmer 2s infinite;
+    }
+
+    .corner-line.top-right {
+      top: 60px;
+      right: 60px;
+      width: 150px;
+      height: 1px;
+      animation: lineShimmer 2s infinite 0.5s;
+    }
+
+    .corner-line.bottom-left {
+      bottom: 60px;
+      left: 60px;
+      width: 150px;
+      height: 1px;
+      animation: lineShimmer 2s infinite 1s;
+    }
+
+    .corner-line.bottom-right {
+      bottom: 60px;
+      right: 60px;
+      width: 150px;
+      height: 1px;
+      animation: lineShimmer 2s infinite 1.5s;
+    }
+
+    @keyframes lineShimmer {
+      0%, 100% { opacity: 0.2; width: 120px; }
+      50% { opacity: 0.8; width: 180px; }
+    }
+
+    .logo-slogan-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 700px;
+      height: 350px;
+      max-width: 92%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInScale 0.8s ease-out;
+      margin: 0 auto;
+    }
+
+    @keyframes fadeInScale {
+      from { 
+        opacity: 0;
+        transform: scale(0.85);
+      }
+      to { 
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .logo-slogan-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+      border-radius: 20px;
+      animation: glowPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { 
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% { 
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.05);
+      }
+    }
+
+    .logo-slogan-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 1;
+      animation: logoImagePulse 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+    }
+
+    @keyframes logoImagePulse {
+      0%, 100% { 
+        transform: scale(1);
+        filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+      }
+      50% { 
+        transform: scale(1.04);
+        filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.6));
+      }
+    }
+
+    /* Loading bar - high tech */
+    .tech-loading-bar {
+      width: 350px;
+      height: 2px;
+      background: rgba(180, 148, 60, 0.2);
+      margin: 0 auto;
+      margin-top: 30px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      z-index: 2;
+    }
+
+    .tech-loading-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(90deg, transparent, #d4af37, #f0d98c, #d4af37, transparent);
+      animation: techSlide 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      border-radius: 10px;
+    }
+
+    @keyframes techSlide {
+      0% { left: -40%; }
+      100% { left: 100%; }
+    }
+
+    /* ===== GOLD THEME UTILITIES ===== */
+    .gold-text {
+      color: #b4943c;
+    }
+
+    .btn-gold {
+      background: linear-gradient(145deg, #d4af37, #b4943c);
+      border: none;
+      color: white;
+      padding: 14px 34px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      box-shadow: 0 12px 28px rgba(180, 148, 60, 0.4);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.9rem;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(180, 148, 60, 0.6);
+      background: linear-gradient(145deg, #e0c87c, #c6a34b);
+    }
+
+    .pulse {
+      animation: pulseGold 2.2s infinite;
+    }
+
+    @keyframes pulseGold {
+      0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+      70% { box-shadow: 0 0 0 25px rgba(212, 175, 55, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    }
+
+    /* ===== NAVIGATION ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 0 5%;
+      transition: all 0.4s;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      height: 80px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #3b3b2f;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      transition: color 0.3s;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #d4af37;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #3b3b2f;
+      font-weight: 500;
+      letter-spacing: 2px;
+      position: relative;
+      transition: color 0.3s;
+      padding: 0.5rem 0;
+    }
+
+    .nav-menu a:hover {
+      color: #b4943c;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #d4af37;
+      transition: width 0.35s ease;
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 2px;
+      background: #b4943c;
+      transition: all 0.3s;
+    }
+
+    /* ===== HERO SECTION (LANDING) ===== */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55)), 
+                  url('hhh.jpeg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      margin-top: 0;
+    }
+
+    .hero-content {
+      z-index: 2;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 4.5rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      letter-spacing: 6px;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+      letter-spacing: 4px;
+      opacity: 0.9;
+    }
+
+    .hero-subtitle-secondary {
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      opacity: 0.85;
+      color: #f0d98c;
+    }
+
+    /* 5 stars in hero */
+    .hero-stars {
+      margin: 20px 0;
+      font-size: 1.5rem;
+      letter-spacing: 8px;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator span {
+      width: 2px;
+      height: 25px;
+      background: #d4af37;
+      display: block;
+      border-radius: 2px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(12px); }
+    }
+
+    /* ===== SECTION HEADERS ===== */
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      letter-spacing: 5px;
+    }
+
+    .section-subtitle {
+      color: #7a7a6e;
+      letter-spacing: 3px;
+      margin-top: 0.8rem;
+      font-weight: 300;
+    }
+
+    /* ===== ROOMS SECTION ===== */
+    .rooms-section {
+      padding: 7rem 5%;
+      background: white;
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .room-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      position: relative;
+    }
+
+    .room-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 60px rgba(180, 148, 60, 0.25);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .room-image {
+      position: relative;
+      height: 270px;
+      overflow: hidden;
+    }
+
+    .room-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .room-card:hover .room-image img {
+      transform: scale(1.1);
+    }
+
+    .room-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #b4943c;
+      color: white;
+      padding: 7px 18px;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      border-radius: 3px;
+      font-weight: 600;
+      backdrop-filter: blur(5px);
+    }
+
+    .vip-badge { background: #1a1a1a; }
+    .vvip-badge { background: linear-gradient(135deg, #d4af37, #8b6914); }
+    .presidential-badge { background: linear-gradient(135deg, #c6a34b, #4a3728); }
+
+    .room-details {
+      padding: 2rem 1.8rem;
+    }
+
+    .room-details h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .room-price {
+      font-size: 1.1rem;
+      color: #6b6b5e;
+      margin-bottom: 1.3rem;
+      letter-spacing: 1px;
+    }
+
+    .room-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .room-features li {
+      padding: 0.45rem 0;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #4a4a3f;
+    }
+
+    .room-features i {
+      width: 20px;
+      text-align: center;
+    }
+
+    .btn-book {
+      width: 100%;
+      padding: 13px;
+      background: transparent;
+      border: 2px solid #d4af37;
+      color: #b4943c;
+      font-weight: 600;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: all 0.4s;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    .btn-book:hover {
+      background: #d4af37;
+      color: white;
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+    }
+
+    /* ===== GALLERY SECTION ===== */
+    .gallery-section {
+      padding: 7rem 5%;
+      background: #fdfaf5;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      height: 280px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      transition: all 0.4s;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      box-shadow: 0 15px 35px rgba(180, 148, 60, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.12);
+    }
+
+    /* ===== ABOUT SECTION (ON SAME PAGE) ===== */
+    .about-section {
+      padding: 7rem 5%;
+      background: white;
+    }
+
+    .about-wrapper {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-bottom: 6rem;
+    }
+
+    .about-text h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.8rem;
+      letter-spacing: 4px;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .about-text p {
+      margin-bottom: 1.3rem;
+      line-height: 1.9;
+      color: #4a4a3f;
+      font-size: 1.05rem;
+    }
+
+    .about-image-container {
+      position: relative;
+    }
+
+    .about-image-container img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+      transition: transform 0.5s;
+    }
+
+    .about-image-container:hover img {
+      transform: scale(1.02);
+    }
+
+    .about-image-container::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid #d4af37;
+      border-radius: 12px;
+      z-index: -1;
+    }
+
+    /* Values */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .value-card {
+      padding: 2.5rem 2rem;
+      background: #fdfaf5;
+      border-radius: 10px;
+      transition: all 0.4s;
+      border: 1px solid transparent;
+    }
+
+    .value-card:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(180, 148, 60, 0.15);
+      background: white;
+    }
+
+    .value-card i {
+      font-size: 2.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .value-card h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 2px;
+    }
+
+    .value-card p {
+      color: #6b6b5e;
+    }
+
+    /* Team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .team-card img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.2rem;
+      border: 3px solid #d4af37;
+      transition: all 0.4s;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .team-card:hover img {
+      transform: scale(1.08);
+      box-shadow: 0 15px 35px rgba(180, 148, 60, 0.35);
+    }
+
+    .team-card h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+    }
+
+    .team-card p {
+      color: #b4943c;
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
+
+    /* ===== RESERVATION MODAL ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: white;
+      padding: 3rem;
+      border-radius: 16px;
+      max-width: 550px;
+      width: 92%;
+      position: relative;
+      animation: slideIn 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-60px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 18px;
+      right: 25px;
+      font-size: 2.2rem;
+      cursor: pointer;
+      color: #b4943c;
+      transition: transform 0.3s;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    .close-modal:hover {
+      transform: rotate(90deg);
+    }
+
+    .modal-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-size: 2rem;
+      letter-spacing: 3px;
+    }
+
+    .reservation-form .form-group {
+      margin-bottom: 1.3rem;
+    }
+
+    .reservation-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #3b3b2f;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+
+    .reservation-form input,
+    .reservation-form select {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1.5px solid #e0d5c0;
+      border-radius: 6px;
+      font-family: inherit;
+      transition: all 0.3s;
+      background: #fefdf9;
+      font-size: 0.95rem;
+    }
+
+    .reservation-form input:focus,
+    .reservation-form select:focus {
+      outline: none;
+      border-color: #d4af37;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      padding: 15px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1a1a1a;
+      color: #d4d4d4;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      border-top: 3px solid #d4af37;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+      color: white;
+    }
+
+    .footer-logo img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #d4af37;
+    }
+
+    .footer-logo h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      letter-spacing: 5px;
+      font-weight: 400;
+    }
+
+    footer p {
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 968px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
+      .about-image-container::before {
+        display: none;
+      }
+      
+      .hero-title {
+        font-size: 3rem;
+        letter-spacing: 4px;
+      }
+
+      .logo-slogan-wrapper {
+        width: 500px;
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(30px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: right 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 3px;
+      }
+
+      .hero-subtitle-secondary {
+        font-size: 0.9rem;
+      }
+
+      .rooms-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-header h2 {
+        font-size: 2.4rem;
+      }
+      
+      .language-switcher {
+        top: 15px;
+        right: 15px;
+        padding: 6px 10px;
+      }
+      
+      .whatsapp-button {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.6rem;
+      }
+
+      .logo-slogan-wrapper {
+        width: 340px;
+        height: 180px;
+      }
+
+      .tech-loading-bar {
+        width: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ========== WHATSAPP BUTTON ========== -->
+  <a href="https://wa.me/237690879860" class="whatsapp-button" target="_blank" title="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip" data-translate="whatsappChat">Chat with us!</span>
+  </a>
+
+  <!-- ========== LANGUAGE SWITCHER ========== -->
+  <div class="language-switcher">
+    <button class="lang-btn active" onclick="switchLanguage('en')" id="langEn">EN</button>
+    <button class="lang-btn" onclick="switchLanguage('fr')" id="langFr">FR</button>
+  </div>
+
+  <!-- ========== LOGO & SLOGAN INTRO SCREEN ========== -->
+  <div id="logoIntro" class="logo-slogan-intro">
+    <!-- Golden particles -->
+    <div class="particles-container" id="particlesContainer"></div>
+    
+    <!-- Corner decorative lines -->
+    <div class="corner-line top-left"></div>
+    <div class="corner-line top-right"></div>
+    <div class="corner-line bottom-left"></div>
+    <div class="corner-line bottom-right"></div>
+    
+    <!-- LOGO SPACE -->
+    <div class="logo-slogan-wrapper">
+      <div class="logo-slogan-glow"></div>
+      <img 
+        src="ccc.png" 
+        alt="Concord International Hotel - Logo and Slogan" 
+        class="logo-slogan-image"
+      >
+    </div>
+
+    <!-- High-tech loading bar below the logo -->
+    <div class="tech-loading-bar"></div>
+  </div>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <img src="ccc.png" alt="Concord International Hotel Logo" onerror="this.style.display='none'">
+        <span>CONCORD INTERNATIONAL HOTEL</span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" data-translate="navHome">Home</a></li>
+        <li><a href="#rooms" data-translate="navRooms">Rooms</a></li>
+        <li><a href="#gallery" data-translate="navGallery">Gallery</a></li>
+        <li><a href="#about" data-translate="navAbout">About</a></li>
+        <li><a href="#contact" data-translate="navContact">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1 class="hero-title"><span data-translate="heroWhere">Where</span> <span class="gold-text" data-translate="heroBusiness">Expresses Business</span><br><span data-translate="heroMeets">Meets Desires by Excellence</span></h1>
+      <div class="hero-stars">
+        <span class="gold-text">★ ★ ★ ★ ★</span>
+      </div>
+      <p class="hero-subtitle" data-translate="heroSubtitle">Experience unparalleled five stars services</p>
+      <a href="#rooms" class="btn-gold pulse" data-translate="heroButton">Explore Our Suites</a>
+    </div>
+    <div class="scroll-indicator">
+      <span></span>
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ========== ROOMS SECTION ========== -->
+  <section id="rooms" class="rooms-section">
+    <div class="section-header">
+      <h2><span data-translate="roomsOur">Our</span> <span class="gold-text" data-translate="roomsDistinguished">Distinguished</span> <span data-translate="roomsRooms">Rooms</span></h2>
+      <p class="section-subtitle">★★★★★ <span data-translate="roomsSubtitle">Choose your sanctuary of comfort</span> ★★★★★</p>
+    </div>
+    
+    <div class="rooms-grid">
+      <!-- Normal Room -->
+      <div class="room-card">
+        <div class="room-image">
+          <img src="room4.jpg" alt="Normal Room">
+          <div class="room-badge" data-translate="roomClassic">CLASSIC</div>
+        </div>
+        <div class="room-details">
+          <h3 data-translate="roomNormal">Normal Room</h3>
+          <p class="room-price"><span data-translate="roomFrom">From</span> <span class="gold-text">50000fcfa</span>/<span data-translate="roomNight">night</span></p>
+          <ul class="room-features">
+            <li><i class="fas fa-bed gold-text"></i> <span data-translate="roomQueenBed">Queen Bed</span></li>
+            <li><i class="fas fa-wifi gold-text"></i> <span data-translate="roomWifi">Free WiFi</span></li>
+            <li><i class="fas fa-tv gold-text"></i> <span data-translate="roomTV">Smart TV</span></li>
+            <li><i class="fas fa-shower gold-text"></i> <span data-translate="roomShower">Rain Shower</span></li>
+          </ul>
+          <button class="btn-book" onclick="openReservation('Normal Room')" data-translate="roomReserve">Reserve Now</button>
+        </div>
+      </div>
+
+      <!-- VIP Room -->
+      <div class="room-card">
+        <div class="room-image">
+          <img src="chambre.jpg" alt="VIP Room">
+          <div class="room-badge vip-badge">VIP</div>
+        </div>
+        <div class="room-details">
+          <h3 data-translate="roomVip">VIP Room</h3>
+          <p class="room-price"><span data-translate="roomFrom">From</span> <span class="gold-text">100000fcfa</span>/<span data-translate="roomNight">night</span></p>
+          <ul class="room-features">
+            <li><i class="fas fa-bed gold-text"></i> <span data-translate="roomKingBed">King Bed</span></li>
+            <li><i class="fas fa-hot-tub gold-text"></i> <span data-translate="roomJacuzzi">Jacuzzi</span></li>
+            <li><i class="fas fa-wine-glass-alt gold-text"></i> <span data-translate="roomMiniBar">Mini Bar</span></li>
+            <li><i class="fas fa-concierge-bell gold-text"></i> <span data-translate="roomButler">Butler Service</span></li>
+          </ul>
+          <button class="btn-book" onclick="openReservation('VIP Room')" data-translate="roomReserve">Reserve Now</button>
+        </div>
+      </div>
+
+      <!-- VVIP Room -->
+      <div class="room-card">
+        <div class="room-image">
+          <img src="C1.jpg" alt="VVIP Room">
+          <div class="room-badge vvip-badge">VVIP</div>
+        </div>
+        <div class="room-details">
+          <h3 data-translate="roomVvip">VVIP Suite</h3>
+          <p class="room-price"><span data-translate="roomFrom">From</span> <span class="gold-text">150000fcfa</span>/<span data-translate="roomNight">night</span></p>
+          <ul class="room-features">
+            <li><i class="fas fa-crown gold-text"></i> <span data-translate="roomPanoramic">Panoramic View</span></li>
+            <li><i class="fas fa-spa gold-text"></i> <span data-translate="roomSpa">Spa</span></li>
+            <li><i class="fas fa-utensils gold-text"></i> <span data-translate="roomChef">Personal Chef</span></li>
+            <li><i class="fas fa-car gold-text"></i> <span data-translate="roomLimo">Car Service</span></li>
+          </ul>
+          <button class="btn-book" onclick="openReservation('VVIP Suite')" data-translate="roomReserve">Reserve Now</button>
+        </div>
+      </div>
+
+      <!-- Presidential Suite -->
+      <div class="room-card">
+        <div class="room-image">
+          <img src="CC.jpg" alt="Presidential Suite">
+          <div class="room-badge presidential-badge" data-translate="roomPresidential">PRESIDENTIAL</div>
+        </div>
+        <div class="room-details">
+          <h3 data-translate="roomPresSuite">Presidential Suite</h3>
+          <p class="room-price"><span data-translate="roomFrom">From</span> <span class="gold-text">250,000fcfa</span>/<span data-translate="roomNight">night</span></p>
+          <ul class="room-features">
+            <li><i class="fas fa-gem gold-text"></i> <span data-translate="roomDiamond">Diamond Service</span></li>
+            <li><i class="fas fa-helicopter gold-text"></i> <span data-translate="roomHelipad">Jaccuzi</span></li>
+            <li><i class="fas fa-users gold-text"></i> <span data-translate="roomPrivateFloor">Private Floor</span></li>
+            <li><i class="fas fa-star gold-text"></i> <span data-translate="roomConcierge">Personal Chef</span></li>
+          </ul>
+          <button class="btn-book" onclick="openReservation('Presidential Suite')" data-translate="roomReserve">Reserve Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY SECTION ========== -->
+  <section id="gallery" class="gallery-section">
+    <div class="section-header">
+      <h2><span data-translate="galleryPhoto">Photo</span> <span class="gold-text" data-translate="galleryGallery">Gallery</span></h2>
+      <p class="section-subtitle">★★★★★ <span data-translate="gallerySubtitle">Glimpses of perfection</span> ★★★★★</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="acceuil.jpg" alt="Hotel exterior"></div>
+      <div class="gallery-item"><img src="picine.jpg" alt="Pool area"></div>
+      <div class="gallery-item"><img src="recep.jpg" alt="Restaurant"></div>
+      <div class="gallery-item"><img src="salle.jpg" alt="Lobby"></div>
+      <div class="gallery-item"><img src="food.jpg" alt="Spa"></div>
+      <div class="gallery-item"><img src="chambre.jpg" alt="Suite detail"></div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about" class="about-section">
+    <div class="about-wrapper">
+      <div class="section-header">
+        <h2><span data-translate="aboutAbout">About</span> <span class="gold-text">Concord International Hotel</span></h2>
+        <p class="section-subtitle">★★★★★ <span data-translate="aboutLegacy">A legacy of luxury since 2025</span> ★★★★★</p>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-text">
+          <h2><span data-translate="aboutOur">Our</span> <span class="gold-text" data-translate="aboutStory">Story</span></h2>
+          <p data-translate="aboutP1">Founded in 2025, Concord International Hotel has quickly established itself as the epitome of refined luxury. Nestled in the heart of the city of Yaoundé, our establishment combines timeless elegance with modern sophistication, offering an unparalleled experience to discerning travelers from around the globe.</p>
+          <p data-translate="aboutP2">Every corner of Concord International Hotel tells a story of meticulous craftsmanship, from our hand-laid marble floors to our bespoke gold-leaf ceilings. We believe that true luxury lies in the details, and our commitment to excellence is reflected in every aspect of your stay.</p>
+          <p data-translate="aboutP3">With 24/7 personalized concierge service, world-class dining, and award-winning spa facilities, we ensure that every moment of your stay exceeds expectations.</p>
+        </div>
+        <div class="about-image-container">
+          <img src="by night.jpg" alt="Hotel history and luxury">
+        </div>
+      </div>
+
+      <!-- Values -->
+      <div class="section-header" style="margin-top: 2rem;">
+        <h2><span data-translate="aboutOurValues">Our</span> <span class="gold-text" data-translate="aboutValues">Values</span></h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <i class="fas fa-gem gold-text"></i>
+          <h3 data-translate="valueExcellence">Excellence</h3>
+          <p data-translate="valueExcellenceDesc">Uncompromising quality in every detail, from our linens to our service standards.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-heart gold-text"></i>
+          <h3 data-translate="valueHospitality">Hospitality</h3>
+          <p data-translate="valueHospitalityDesc">Warmth that transforms a stay into a cherished memory, making you feel truly at home.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-leaf gold-text"></i>
+          <h3 data-translate="valueSustainability">Sustainability</h3>
+          <p data-translate="valueSustainabilityDesc">Luxury with environmental responsibility, preserving beauty for generations to come.</p>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div class="section-header" style="margin-top: 2rem;">
+        <h2><span data-translate="teamMeet">Meet Our</span> <span class="gold-text" data-translate="teamTeam">Team</span></h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300" alt="General Manager">
+          <h3>Daniel</h3>
+          <p class="gold-text" data-translate="teamGM">General Manager</p>
+        </div>
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300" alt="Executive Chef">
+          <h3>Laure</h3>
+          <p class="gold-text" data-translate="teamChef">Executive Chef</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="contact">
+    <div class="footer-logo">
+      <img src="your-logo-slogan.png" alt="Concord International Hotel Logo" onerror="this.style.display='none'">
+      <h3>CONCORD INTERNATIONAL HOTEL ★★★★★</h3>
+    </div>
+    <p>© 2026 Concord International Hotel. <span data-translate="footerRights">All rights reserved.</span> | contact@concordhotel.com</p>
+  </footer>
+
+  <!-- ========== RESERVATION MODAL ========== -->
+  <div id="reservationModal" class="modal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeReservation()">&times;</button>
+      <h2 class="modal-title" data-translate="modalTitle">Reservation ★★★★★</h2>
+      <p style="text-align:center; margin-bottom:1.5rem; font-size:1.2rem;">
+        <span class="gold-text" id="selectedRoomTitle" style="font-weight:600;"></span>
+      </p>
+      <form id="reservationForm" class="reservation-form">
+        <div class="form-group">
+          <label data-translate="formName">Full Name *</label>
+          <input type="text" required placeholder="Enter your full name" data-translate-placeholder="formNamePlaceholder" id="formName">
+        </div>
+        <div class="form-group">
+          <label data-translate="formEmail">Email Address *</label>
+          <input type="email" required placeholder="your@email.com" id="formEmail">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label data-translate="formCheckin">Check-in *</label>
+            <input type="date" required id="formCheckin">
+          </div>
+          <div class="form-group">
+            <label data-translate="formCheckout">Check-out *</label>
+            <input type="date" required id="formCheckout">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-translate="formGuests">Number of Guests *</label>
+          <select required id="formGuests">
+            <option value="" data-translate="formSelect">Select number of guests</option>
+            <option data-translate="formGuest1">1 Guest</option>
+            <option data-translate="formGuest2">2 Guests</option>
+            <option data-translate="formGuest3">3 Guests</option>
+            <option data-translate="formGuest4">4 Guests</option>
+            <option data-translate="formGuest5">5+ Guests</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-gold submit-btn" data-translate="formSubmit">Confirm Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // ===== TRANSLATION DATA =====
+    const translations = {
+      en: {
+        whatsappChat: "Chat with us!",
+        navHome: "Home",
+        navRooms: "Rooms",
+        navGallery: "Gallery",
+        navAbout: "About",
+        navContact: "Contact",
+        heroWhere: "Where",
+        heroBusiness: "Expresses Business",
+        heroMeets: "Meets Desires by Excellence",
+        heroSubtitle: "Experience unparalleled five stars services",
+        heroButton: "Explore Our Suites",
+        roomsOur: "Our",
+        roomsDistinguished: "Distinguished",
+        roomsRooms: "Rooms",
+        roomsSubtitle: "Choose your sanctuary of comfort",
+        roomClassic: "CLASSIC",
+        roomNormal: "Normal Room",
+        roomFrom: "From",
+        roomNight: "night",
+        roomQueenBed: "Queen Bed",
+        roomWifi: "Free WiFi",
+        roomTV: "Smart TV",
+        roomShower: "Rain Shower",
+        roomVip: "VIP Room",
+        roomKingBed: "King Bed",
+        roomJacuzzi: "Jacuzzi",
+        roomMiniBar: "Mini Bar",
+        roomButler: "Butler Service",
+        roomVvip: "VVIP Suite",
+        roomPanoramic: "Panoramic View",
+        roomSpa: "Private Spa",
+        roomChef: "Personal Chef",
+        roomLimo: "Limousine Service",
+        roomPresidential: "PRESIDENTIAL",
+        roomPresSuite: "Presidential Suite",
+        roomDiamond: "Diamond Service",
+        roomHelipad: "Helipad Access",
+        roomPrivateFloor: "Private Floor",
+        roomConcierge: "24/7 Concierge",
+        roomReserve: "Reserve Now",
+        galleryPhoto: "Photo",
+        galleryGallery: "Gallery",
+        gallerySubtitle: "Glimpses of perfection",
+        aboutAbout: "About",
+        aboutLegacy: "A legacy of luxury since 2025",
+        aboutOur: "Our",
+        aboutStory: "Story",
+        aboutP1: "Founded in 2025, Concord International Hotel has quickly established itself as the epitome of refined luxury. Nestled in the heart of the city of Yaoundé, our establishment combines timeless elegance with modern sophistication, offering an unparalleled experience to discerning travelers from around the globe.",
+        aboutP2: "Every corner of Concord International Hotel tells a story of meticulous craftsmanship, from our hand-laid marble floors to our bespoke gold-leaf ceilings. We believe that true luxury lies in the details, and our commitment to excellence is reflected in every aspect of your stay.",
+        aboutP3: "With 24/7 personalized concierge service, world-class dining, and award-winning spa facilities, we ensure that every moment of your stay exceeds expectations.",
+        aboutOurValues: "Our",
+        aboutValues: "Values",
+        valueExcellence: "Excellence",
+        valueExcellenceDesc: "Uncompromising quality in every detail, from our linens to our service standards.",
+        valueHospitality: "Hospitality",
+        valueHospitalityDesc: "Warmth that transforms a stay into a cherished memory, making you feel truly at home.",
+        valueSustainability: "Sustainability",
+        valueSustainabilityDesc: "Luxury with environmental responsibility, preserving beauty for generations to come.",
+        teamMeet: "Meet Our",
+        teamTeam: "Team",
+        teamGM: "General Manager",
+        teamChef: "Executive Chef",
+        teamConcierge: "Head Concierge",
+        footerRights: "All rights reserved.",
+        modalTitle: "Reservation ★★★★★",
+        formName: "Full Name *",
+        formNamePlaceholder: "Enter your full name",
+        formEmail: "Email Address *",
+        formCheckin: "Check-in *",
+        formCheckout: "Check-out *",
+        formGuests: "Number of Guests *",
+        formSelect: "Select number of guests",
+        formGuest1: "1 Guest",
+        formGuest2: "2 Guests",
+        formGuest3: "3 Guests",
+        formGuest4: "4 Guests",
+        formGuest5: "5+ Guests",
+        formSubmit: "Confirm Reservation",
+        alertMessage: "✨ Reservation Confirmed!\n\nWelcome to Concord International Hotel ★★★★★\nWe look forward to providing you with an extraordinary experience.\n\nA confirmation email has been sent to your address."
+      },
+      fr: {
+        whatsappChat: "Discutez avec nous!",
+        navHome: "Accueil",
+        navRooms: "Chambres",
+        navGallery: "Galerie",
+        navAbout: "À Propos",
+        navContact: "Contact",
+        heroWhere: "Où",
+        heroBusiness: "Les Affaires S'Expriment",
+        heroMeets: "Rencontrent les Désirs par l'Excellence",
+        heroSubtitle: "Vivez des services cinq étoiles inégalés",
+        heroButton: "Découvrez Nos Suites",
+        roomsOur: "Nos",
+        roomsDistinguished: "Distinguées",
+        roomsRooms: "Chambres",
+        roomsSubtitle: "Choisissez votre sanctuaire de confort",
+        roomClassic: "CLASSIQUE",
+        roomNormal: "Chambre Normale",
+        roomFrom: "À partir de",
+        roomNight: "nuit",
+        roomQueenBed: "Lit Queen",
+        roomWifi: "WiFi Gratuit",
+        roomTV: "Smart TV",
+        roomShower: "Douche à Effet Pluie",
+        roomVip: "Chambre VIP",
+        roomKingBed: "Lit King",
+        roomJacuzzi: "Jacuzzi",
+        roomMiniBar: "Mini Bar",
+        roomButler: "Service Majordome",
+        roomVvip: "Suite VVIP",
+        roomPanoramic: "Vue Panoramique",
+        roomSpa: "Spa Privé",
+        roomChef: "Chef Personnel",
+        roomLimo: "Service Limousine",
+        roomPresidential: "PRÉSIDENTIELLE",
+        roomPresSuite: "Suite Présidentielle",
+        roomDiamond: "Service Diamant",
+        roomHelipad: "Accès Héliport",
+        roomPrivateFloor: "Étage Privé",
+        roomConcierge: "Concierge 24/7",
+        roomReserve: "Réserver",
+        galleryPhoto: "Galerie",
+        galleryGallery: "Photos",
+        gallerySubtitle: "Aperçus de la perfection",
+        aboutAbout: "À Propos",
+        aboutLegacy: "Un héritage de luxe depuis 2025",
+        aboutOur: "Notre",
+        aboutStory: "Histoire",
+        aboutP1: "Fondé en 2025, le Concord International Hotel s'est rapidement imposé comme l'incarnation du luxe raffiné. Niché au cœur de la ville de Yaoundé, notre établissement allie élégance intemporelle et sophistication moderne, offrant une expérience incomparable aux voyageurs exigeants du monde entier.",
+        aboutP2: "Chaque recoin du Concord International Hotel raconte une histoire d'artisanat méticuleux, de nos sols en marbre posés à la main à nos plafonds en feuilles d'or sur mesure. Nous croyons que le vrai luxe réside dans les détails, et notre engagement envers l'excellence se reflète dans chaque aspect de votre séjour.",
+        aboutP3: "Avec un service de conciergerie personnalisé 24/7, une restauration de classe mondiale et des installations de spa primées, nous veillons à ce que chaque instant de votre séjour dépasse vos attentes.",
+        aboutOurValues: "Nos",
+        aboutValues: "Valeurs",
+        valueExcellence: "Excellence",
+        valueExcellenceDesc: "Une qualité sans compromis dans chaque détail, de notre linge à nos standards de service.",
+        valueHospitality: "Hospitalité",
+        valueHospitalityDesc: "Une chaleur qui transforme un séjour en un souvenir précieux, vous faisant vous sentir vraiment chez vous.",
+        valueSustainability: "Durabilité",
+        valueSustainabilityDesc: "Le luxe avec une responsabilité environnementale, préservant la beauté pour les générations à venir.",
+        teamMeet: "Rencontrez Notre",
+        teamTeam: "Équipe",
+        teamGM: "Directeur Général",
+        teamChef: "Chef Exécutif",
+        teamConcierge: "Chef Concierge",
+        footerRights: "Tous droits réservés.",
+        modalTitle: "Réservation ★★★★★",
+        formName: "Nom Complet *",
+        formNamePlaceholder: "Entrez votre nom complet",
+        formEmail: "Adresse Email *",
+        formCheckin: "Arrivée *",
+        formCheckout: "Départ *",
+        formGuests: "Nombre d'Invités *",
+        formSelect: "Sélectionnez le nombre d'invités",
+        formGuest1: "1 Invité",
+        formGuest2: "2 Invités",
+        formGuest3: "3 Invités",
+        formGuest4: "4 Invités",
+        formGuest5: "5+ Invités",
+        formSubmit: "Confirmer la Réservation",
+        alertMessage: "✨ Réservation Confirmée!\n\nBienvenue au Concord International Hotel ★★★★★\nNous avons hâte de vous offrir une expérience extraordinaire.\n\nUn email de confirmation a été envoyé à votre adresse."
+      }
+    };
+
+    let currentLanguage = 'en';
+
+    // ===== LANGUAGE SWITCH FUNCTION =====
+    function switchLanguage(lang) {
+      currentLanguage = lang;
+      
+      document.getElementById('langEn').classList.remove('active');
+      document.getElementById('langFr').classList.remove('active');
+      document.getElementById('lang' + lang.charAt(0).toUpperCase() + lang.slice(1)).classList.add('active');
+      
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-translate-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+          element.placeholder = translations[lang][key];
+        }
+      });
+    }
+
+    // ===== CREATE GOLDEN PARTICLES =====
+    function createParticles() {
+      const container = document.getElementById('particlesContainer');
+      if (!container) return;
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        const size = Math.random() * 4 + 2;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        
+        particle.style.animationDelay = Math.random() * 3 + 's';
+        particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        
+        container.appendChild(particle);
+      }
+    }
+    
+    createParticles();
+
+    // ===== LOGO INTRO SCREEN =====
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const intro = document.getElementById('logoIntro');
+        if (intro) {
+          intro.classList.add('intro-hidden');
+          setTimeout(() => {
+            intro.style.display = 'none';
+          }, 1000);
+        }
+      }, 3000);
+    });
+
+    // ===== MOBILE MENU TOGGLE =====
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (hamburger && navMenu) {
+      hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+      
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+        });
+      });
+    }
+
+    // ===== RESERVATION MODAL =====
+    function openReservation(roomType) {
+      const modal = document.getElementById('reservationModal');
+      const roomTitle = document.getElementById('selectedRoomTitle');
+      
+      if (modal && roomTitle) {
+        roomTitle.textContent = roomType;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeReservation() {
+      const modal = document.getElementById('reservationModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('reservationModal');
+      if (e.target === modal) {
+        closeReservation();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeReservation();
+      }
+    });
+
+    // ===== FORM SUBMISSION WITH WHATSAPP INTEGRATION =====
+    const reservationForm = document.getElementById('reservationForm');
+    if (reservationForm) {
+      reservationForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const submitBtn = reservationForm.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        
+        // Get form data using IDs
+        const fullName = document.getElementById('formName').value;
+        const email = document.getElementById('formEmail').value;
+        const checkin = document.getElementById('formCheckin').value;
+        const checkout = document.getElementById('formCheckout').value;
+        const guests = document.getElementById('formGuests').value;
+        const roomType = document.getElementById('selectedRoomTitle').textContent;
+        
+        submitBtn.textContent = currentLanguage === 'fr' ? 'Traitement...' : 'Processing...';
+        submitBtn.style.background = 'linear-gradient(145deg, #8b6914, #6b4f10)';
+        submitBtn.disabled = true;
+        
+        setTimeout(() => {
+          submitBtn.textContent = currentLanguage === 'fr' ? '✓ Confirmé!' : '✓ Confirmed!';
+          submitBtn.style.background = 'linear-gradient(145deg, #2d5a27, #1e3d1a)';
+          
+          // Prepare WhatsApp message
+          const whatsappNumber = '237690879860';
+          const message = encodeURIComponent(
+            `🌟 *NEW RESERVATION - CONCORD INTERNATIONAL HOTEL* 🌟\n\n` +
+            `🏨 *Room:* ${roomType}\n` +
+            `👤 *Name:* ${fullName}\n` +
+            `📧 *Email:* ${email}\n` +
+            `📅 *Check-in:* ${checkin}\n` +
+            `📅 *Check-out:* ${checkout}\n` +
+            `👥 *Guests:* ${guests}\n\n` +
+            `✅ *Status:* CONFIRMED\n` +
+            `🏨 *Hotel:* Concord International Hotel ★★★★★\n` +
+            `📍 *Location:* Yaoundé, Cameroon\n\n` +
+            `_Sent via Concord International Hotel Reservation System_`
+          );
+          
+          // Open WhatsApp with the message
+          const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+          
+          setTimeout(() => {
+            alert(translations[currentLanguage].alertMessage);
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
+            closeReservation();
+            reservationForm.reset();
+            submitBtn.textContent = originalText;
+            submitBtn.style.background = 'linear-gradient(145deg, #d4af37, #b4943c)';
+            submitBtn.disabled = false;
+          }, 800);
+        }, 1500);
+      });
+    }
+
+    // ===== SMOOTH SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const target = document.querySelector(targetId);
+        if (target) {
+          const offsetTop = target.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // ===== REVEAL ANIMATIONS =====
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.room-card, .gallery-item, .value-card, .team-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      observer.observe(el);
+    });
+
+    setTimeout(() => {
+      document.querySelectorAll('.room-card, .gallery-item, .value-card, .team-card').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      });
+    }, 3200);
+  </script>
+</body>
+</html>
